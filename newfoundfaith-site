@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full w-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Found Faith Ministries</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter (for general text) and any other desired fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 5 Pro CDN (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" xintegrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        /* Custom styles to ensure consistent font and general appearance */
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        /* Ensure buttons and interactive elements have rounded corners */
+        .rounded-full, .rounded-xl, .rounded-2xl, .rounded-lg, .rounded-md {
+            border-radius: 9999px; /* Full circle */
+            border-radius: 0.75rem; /* Large rounded corners */
+            border-radius: 1rem; /* Extra large rounded corners */
+            border-radius: 0.5rem; /* Medium rounded corners */
+            border-radius: 0.375rem; /* Small rounded corners */
+        }
+        /* General button styling for consistency */
+        button, .button-link {
+            transition: all 0.3s ease-in-out;
+            transform: scale(1);
+        }
+        button:hover, .button-link:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+        button:active, .button-link:active {
+            transform: scale(0.98);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        /* Modal specific styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 30px;
+            max-width: 600px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transform: translateY(-20px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .modal-overlay.show .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #a0aec0;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        .modal-close-btn:hover {
+            color: #4a5568;
+        }
+    </style>
+</head>
+<body class="h-full w-full">
+    <div class="min-h-screen bg-gradient-to-br from-purple-100 via-indigo-50 to-violet-100">
+        <!-- Header Section -->
+        <header class="bg-gradient-to-r from-purple-900 via-indigo-900 to-violet-900 shadow-2xl relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-4 left-8 text-6xl text-yellow-300">✨</div>
+                <div class="absolute top-12 right-12 text-4xl text-yellow-200">👑</div>
+                <div class="absolute bottom-8 left-16 text-5xl text-yellow-300">🕊️</div>
+                <div class="absolute bottom-6 right-8 text-3xl text-yellow-200">✨</div>
+            </div>
+            <div class="max-w-6xl mx-auto px-4 py-8 relative">
+                <div class="text-center">
+                    <div class="relative inline-block mb-6">
+                        <div class="absolute inset-0 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 rounded-full blur-lg opacity-20 scale-110"></div>
+                        <img src="https://ucarecdn.com/2186b1ac-a713-48ae-a95f-5fcd5fe06863/-/format/auto/" alt="New Found Faith Visions Logo" class="w-48 h-48 mx-auto relative z-10 rounded-full border-4 border-yellow-300 shadow-2xl">
+                    </div>
+                    <h1 class="text-5xl font-bold text-white mb-3 drop-shadow-lg">New Found Faith Visions</h1>
+                    <p class="text-2xl text-purple-200 mb-2 font-semibold">New Found Faith Ministries</p>
+                    <p class="text-xl text-yellow-300 font-medium">Dr. QK Tyson - Shepherd, Pastor &amp; Founder</p>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-6xl mx-auto px-4 py-8">
+            <!-- Jeremiah 29:11 Quote Section -->
+            <section class="mb-12 text-center">
+                <div class="bg-gradient-to-r from-purple-600 via-indigo-600 to-violet-600 rounded-2xl p-8 mb-8 text-white shadow-2xl">
+                    <div class="flex flex-col md:flex-row items-center justify-center gap-8">
+                        <div class="text-center">
+                            <div class="text-6xl mb-2">👑</div>
+                            <p class="text-lg italic">"For I know the plans I have for you," declares the Lord, "plans to prosper you and not to harm you, to give you hope and a future."</p>
+                            <p class="text-purple-200 mt-2">- Jeremiah 29:11</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Our Ministry Section (from previous app) -->
+            <section class="bg-white rounded-2xl shadow-xl p-8 mb-8 border-2 border-purple-200">
+                <h2 class="text-3xl font-bold text-purple-800 text-center mb-6">About Our Ministry & Vision</h2>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    New Found Faith Ministries is dedicated to fostering spiritual growth, deep biblical understanding, and genuine community among believers and seekers worldwide. Under the compassionate leadership of Dr. QK Tyson, AS-HCM DMETA HONS, we strive to create a welcoming and transformative environment for all.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-4">
+                    New Found Faith Visions, our active outreach subsidiary, operates with a special heart for **Baltimore City and surrounding areas**. Through our "Family in Ministry" podcast and various online resources, we are continually building and growing our services to meet diverse needs.
+                </p>
+
+                <h3 class="text-xl font-semibold text-purple-700 mb-4 border-b pb-2">Our Key Outreach Goals Include:</h3>
+                <ul class="list-none p-0 space-y-3">
+                    <li class="bg-purple-50 p-3 rounded-lg flex items-center shadow-sm">
+                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                        <span class="text-gray-800">Inspiring Faith & Knowledge: Providing insightful doctrinal teaching, Bible studies, and sermons to help individuals grow in their understanding of God's Word.</span>
+                    </li>
+                    <li class="bg-purple-50 p-3 rounded-lg flex items-center shadow-sm">
+                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                        <span class="text-gray-800">Building a Loving Community: Creating an interactive, judgment-free space where listeners can share testimonies, ask questions, and experience supportive fellowship.</span>
+                    </li>
+                    <li class="bg-purple-50 p-3 rounded-lg flex items-center shadow-sm">
+                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                        <span class="text-gray-800">Empowering Youth: Developing programs specifically designed to equip young people with faith-based principles, mentorship, and a safe, inclusive environment for spiritual growth.</span>
+                    </li>
+                    <li class="bg-purple-50 p-3 rounded-lg flex items-center shadow-sm">
+                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                        <span class="text-gray-800">Embracing & Affirming the LGBTQ+ Community: Offering a welcoming and affirming space to connect with God's love, find community, and explore faith without judgment.</span>
+                    </li>
+                    <li class="bg-purple-50 p-3 rounded-lg flex items-center shadow-sm">
+                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                        <span class="text-gray-800">Supporting Our Elders: Implementing initiatives to honor and care for the elderly, offering companionship, spiritual encouragement, and practical assistance.</span>
+                    </li>
+                    <li class="bg-purple-50 p-3 rounded-lg flex items-center shadow-sm">
+                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                        <span class="text-gray-800">Academic & Life Tutoring: Establishing services to support academic success for students of all ages, fostering critical thinking and life skills development.</span>
+                    </li>
+                    <li class="bg-purple-50 p-3 rounded-lg flex items-center shadow-sm">
+                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                        <span class="text-gray-800">Offering Light Spiritual Counseling: Providing compassionate, biblically-based spiritual guidance and encouragement for those navigating life's challenges.</span>
+                    </li>
+                    <li class="bg-purple-50 p-3 rounded-lg flex items-center shadow-sm">
+                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                        <span class="text-gray-800">Encouraging Holistic Well-being: Emphasizing spiritual, mental, and physical replenishment as a foundation for effective service and an abundant life.</span>
+                    </li>
+                    <li class="bg-purple-50 p-3 rounded-lg flex items-center shadow-sm">
+                        <i class="fas fa-check-circle text-green-500 mr-3"></i>
+                        <span class="text-gray-800">Sharing God's Love: Welcoming all, especially those seeking salvation or spiritual renewal, to learn of God's unconditional love, forgiveness, and transforming grace.</span>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Outreach Scenario Advisor Section (New LLM Feature) -->
+            <section class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-2xl shadow-2xl p-8 mb-8 border-2 border-purple-300">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center gap-3 mb-4">
+                        <div class="text-4xl">✨</div>
+                        <h2 class="text-4xl font-bold text-purple-800">Outreach Scenario Advisor</h2>
+                        <div class="text-4xl">💡</div>
+                    </div>
+                    <p class="text-xl text-purple-600 max-w-3xl mx-auto">
+                        Need guidance on how to approach a challenging outreach situation? Describe your scenario and let our AI provide compassionate, biblically-informed advice.
+                    </p>
+                </div>
+                <div class="bg-white rounded-xl p-6 shadow-md border border-gray-200">
+                    <div class="mb-6">
+                        <label for="outreachScenario" class="block text-sm font-medium text-gray-700 mb-2">Describe your outreach scenario:</label>
+                        <textarea id="outreachScenario" rows="6" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="e.g., How can I support someone going through a crisis of faith? Or, How do I offer assistance to a family facing financial hardship?"></textarea>
+                    </div>
+                    <div class="text-center mb-6">
+                        <button id="generateAdviceBtn" class="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-semibold py-3 px-8 rounded-md transition-colors duration-300 shadow-lg">
+                            <i class="fas fa-magic mr-2"></i> Get Advice ✨
+                        </button>
+                    </div>
+                    <div id="adviceLoading" class="hidden text-center text-purple-600 font-medium">
+                        <i class="fas fa-spinner fa-spin mr-2"></i> Generating advice...
+                    </div>
+                    <div id="outreachAdviceOutput" class="mt-6 p-4 bg-purple-50 border border-purple-200 rounded-lg hidden">
+                        <h4 class="font-semibold text-purple-800 mb-2">Outreach Advisor's Advice:</h4>
+                        <p class="text-gray-700" id="adviceText"></p>
+                    </div>
+                    <div id="adviceError" class="hidden mt-6 p-4 bg-red-100 border border-red-300 text-red-700 rounded-lg">
+                        <p>Sorry, an error occurred while generating advice. Please try again.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Connect With Us Section (with Podcast and Facebook links) -->
+            <section class="bg-gradient-to-r from-blue-100 via-sky-100 to-blue-200 rounded-2xl shadow-2xl p-8 mb-8 border-2 border-blue-300">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center gap-3 mb-4">
+                        <div class="text-4xl">🔗</div>
+                        <h2 class="text-4xl font-bold text-blue-800">Connect With Us</h2>
+                        <div class="text-4xl">🌐</div>
+                    </div>
+                    <p class="text-xl text-blue-700 max-w-3xl mx-auto">Stay connected with New Found Faith Ministries through our podcast and social media!</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-6">
+                    <a href="https://rss.com/podcasts/drquepodcast/" target="_blank" rel="noopener noreferrer" class="button-link bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-8 py-4 rounded-xl text-lg font-bold shadow-lg">
+                        <i class="fas fa-podcast mr-2"></i> Listen to the "Family in Ministry" Podcast
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61578591652810&sk=about" target="_blank" rel="noopener noreferrer" class="button-link bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-8 py-4 rounded-xl text-lg font-bold shadow-lg">
+                        <i class="fab fa-facebook-f mr-2"></i> Visit Our Facebook Page
+                    </a>
+                </div>
+            </section>
+
+            <!-- Request Services Section -->
+            <section class="bg-gradient-to-br from-white via-purple-50 to-indigo-50 rounded-2xl shadow-2xl p-8 mb-8 border-2 border-purple-200">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center gap-3 mb-4">
+                        <div class="text-4xl">🙏</div>
+                        <h2 class="text-4xl font-bold text-purple-800">Request Services</h2>
+                        <div class="text-4xl">✨</div>
+                    </div>
+                    <p class="text-xl text-purple-600">We are here to serve you with love and compassion</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-gradient-to-br from-blue-100 to-indigo-100 rounded-xl p-6 text-center border-2 border-indigo-300 hover:border-indigo-500 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <div class="text-5xl mb-4">🤝</div>
+                        <h3 class="text-xl font-semibold text-indigo-800 mb-3">New Member Registration</h3>
+                        <p class="text-indigo-600 mb-4">Join the New Found Faith Visions family</p>
+                        <button class="bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg text-sm transition-all duration-300 font-semibold shadow-lg transform hover:scale-105" onclick="showModal('newMemberForm')">Register Now</button>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-100 to-emerald-100 rounded-xl p-6 text-center border-2 border-emerald-300 hover:border-emerald-500 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <div class="text-5xl mb-4">❤️</div>
+                        <h3 class="text-xl font-semibold text-emerald-800 mb-3">Outreach Services</h3>
+                        <p class="text-emerald-600 mb-4">Request community outreach support</p>
+                        <button class="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-6 py-3 rounded-lg text-sm transition-all duration-300 font-semibold shadow-lg transform hover:scale-105" onclick="showModal('outreachForm')">Request Help</button>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-100 to-violet-100 rounded-xl p-6 text-center border-2 border-violet-300 hover:border-violet-500 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <div class="text-5xl mb-4">📝</div>
+                        <h3 class="text-xl font-semibold text-violet-800 mb-3">Resume Building</h3>
+                        <p class="text-violet-600 mb-4">Professional resume assistance &amp; reference letters</p>
+                        <button class="bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white px-6 py-3 rounded-lg text-sm transition-all duration-300 font-semibold shadow-lg transform hover:scale-105" onclick="showModal('resumeForm')">Get Started</button>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-100 to-amber-100 rounded-xl p-6 text-center border-2 border-amber-300 hover:border-amber-500 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <div class="text-5xl mb-4">👥</div>
+                        <h3 class="text-xl font-semibold text-amber-800 mb-3">Partner Church</h3>
+                        <p class="text-amber-600 mb-4">Collaborate with our ministry</p>
+                        <button class="bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-700 hover:to-orange-700 text-white px-6 py-3 rounded-lg text-sm transition-all duration-300 font-semibold shadow-lg transform hover:scale-105" onclick="showModal('partnerChurchForm')">Partner With Us</button>
+                    </div>
+                    <div class="bg-gradient-to-br from-teal-100 to-cyan-100 rounded-xl p-6 text-center border-2 border-cyan-300 hover:border-cyan-500 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <div class="text-5xl mb-4">👋</div>
+                        <h3 class="text-xl font-semibold text-cyan-800 mb-3">Visitor Information</h3>
+                        <p class="text-cyan-600 mb-4">First time visiting? Let us know!</p>
+                        <button class="bg-gradient-to-r from-cyan-600 to-teal-600 hover:from-cyan-700 hover:to-teal-700 text-white px-6 py-3 rounded-lg text-sm transition-all duration-300 font-semibold shadow-lg transform hover:scale-105" onclick="showModal('visitorForm')">Visitor Form</button>
+                    </div>
+                    <div class="bg-gradient-to-br from-red-100 to-rose-100 rounded-xl p-6 text-center border-2 border-rose-300 hover:border-rose-500 transition-all duration-300 transform hover:scale-105 shadow-lg">
+                        <div class="text-5xl mb-4">🙏</div>
+                        <h3 class="text-xl font-semibold text-rose-800 mb-3">Prayer Request</h3>
+                        <p class="text-rose-600 mb-4">Submit your prayer needs</p>
+                        <button class="bg-gradient-to-r from-rose-600 to-red-600 hover:from-rose-700 hover:to-red-700 text-white px-6 py-3 rounded-lg text-sm transition-all duration-300 font-semibold shadow-lg transform hover:scale-105" onclick="showModal('prayerForm')">Submit Prayer</button>
+                    </div>
+                </div>
+                <!-- Quick Contact Form -->
+                <form class="max-w-2xl mx-auto p-6 bg-white rounded-xl shadow-md border border-gray-200">
+                    <h3 class="text-2xl font-semibold text-center text-gray-800 mb-6">Quick Contact Form:</h3>
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Full Name <span class="text-red-500">*</span></label>
+                            <input id="name" required="" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" type="text" name="name">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address <span class="text-red-500">*</span></label>
+                            <input id="email" required="" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" type="email" name="email">
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                        <input id="phone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" type="tel" name="phone">
+                    </div>
+                    <div class="mb-6">
+                        <label for="serviceType" class="block text-sm font-medium text-gray-700 mb-2">Service Type <span class="text-red-500">*</span></label>
+                        <select id="serviceType" name="serviceType" required="" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="outreach">Outreach Services</option>
+                            <option value="resume">Resume Building</option>
+                            <option value="membership">New Member Registration</option>
+                            <option value="partner">Partner Church Inquiry</option>
+                            <option value="visitor">Visitor Information</option>
+                            <option value="prayer">Prayer Request</option>
+                            <option value="spiritual_counseling">Spiritual Counseling</option>
+                        </select>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Additional Message</label>
+                        <textarea id="message" name="message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Please provide any additional details about your request..."></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold py-3 px-8 rounded-md transition-colors duration-300 shadow-lg">Submit Request</button>
+                    </div>
+                </form>
+            </section>
+
+            <!-- Advertise With Us Section -->
+            <section class="bg-gradient-to-r from-yellow-100 via-amber-100 to-orange-100 rounded-2xl shadow-2xl p-8 mb-8 border-2 border-yellow-300">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center gap-3 mb-4">
+                        <div class="text-4xl">📢</div>
+                        <h2 class="text-4xl font-bold text-amber-800">Advertise With Us</h2>
+                        <div class="text-4xl">🌟</div>
+                    </div>
+                    <p class="text-xl text-amber-700 max-w-3xl mx-auto">Reach our faithful community through various advertising opportunities. From social media to our newsletter and website, we offer multiple platforms to share your message with our congregation.</p>
+                </div>
+                <div class="bg-gradient-to-br from-white to-yellow-50 rounded-xl p-8 shadow-lg border-2 border-yellow-200">
+                    <div class="grid md:grid-cols-3 gap-6 mb-6">
+                        <div class="text-center p-4 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-lg border border-yellow-200 shadow-sm">
+                            <div class="text-4xl mb-3">🌐</div>
+                            <h4 class="font-bold text-amber-800 text-lg mb-2">Website Ads</h4>
+                            <p class="text-amber-600 mb-4">Banner and sponsored content</p>
+                            <button class="bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 w-full font-semibold shadow-lg" onclick="showModal('websiteAdsForm')">Inquire Now</button>
+                        </div>
+                        <div class="text-center p-4 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-lg border border-yellow-200 shadow-sm">
+                            <div class="text-4xl mb-3">📱</div>
+                            <h4 class="font-bold text-amber-800 text-lg mb-2">Social Media</h4>
+                            <p class="text-amber-600 mb-4">Facebook and platform promotion</p>
+                            <button class="bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 w-full font-semibold shadow-lg" onclick="showModal('socialMediaAdsForm')">Inquire Now</button>
+                        </div>
+                        <div class="text-center p-4 bg-gradient-to-br from-yellow-50 to-amber-50 rounded-lg border border-yellow-200 shadow-sm">
+                            <div class="text-4xl mb-3">📧</div>
+                            <h4 class="font-bold text-amber-800 text-lg mb-2">Newsletter</h4>
+                            <p class="text-amber-600 mb-4">Email and print publications</p>
+                            <button class="bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 w-full font-semibold shadow-lg" onclick="showModal('newsletterAdsForm')">Inquire Now</button>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="bg-gradient-to-r from-yellow-600 via-amber-600 to-orange-600 hover:from-yellow-700 hover:via-amber-700 hover:to-orange-700 text-white px-10 py-4 rounded-xl text-xl font-bold transition-all duration-300 shadow-2xl transform hover:scale-105" onclick="showModal('generalAdsForm')">
+                            📢 Start Your Ad Campaign
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Give & Support Our Ministry Section -->
+            <section class="bg-gradient-to-r from-emerald-100 via-green-100 to-teal-100 rounded-2xl shadow-2xl p-8 mb-8 border-2 border-emerald-300">
+                <div class="text-center mb-8">
+                    <div class="inline-flex items-center gap-3 mb-4">
+                        <div class="text-4xl">💝</div>
+                        <h2 class="text-4xl font-bold text-emerald-800">Give &amp; Support Our Ministry</h2>
+                        <div class="text-4xl">🙏</div>
+                    </div>
+                    <p class="text-xl text-emerald-700 max-w-3xl mx-auto">Your generosity helps us serve our community and spread God's love. Choose from multiple convenient giving options, including recurring donations.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="bg-gradient-to-br from-white to-emerald-50 rounded-xl p-6 text-center shadow-lg border-2 border-emerald-200 hover:border-emerald-400 transition-all duration-300 transform hover:scale-105">
+                        <div class="text-5xl mb-4">💳</div>
+                        <h3 class="text-xl font-semibold text-emerald-800 mb-3">Online Donations</h3>
+                        <p class="text-emerald-600 mb-4 text-sm">Secure online giving via card, PayPal, Apple Pay, or Cash App</p>
+                        <button class="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 w-full font-semibold shadow-lg" onclick="showModal('onlineDonationInfo')">Give Online</button>
+                    </div>
+                    <div class="bg-gradient-to-br from-white to-emerald-50 rounded-xl p-6 text-center shadow-lg border-2 border-emerald-200 hover:border-emerald-400 transition-all duration-300 transform hover:scale-105">
+                        <div class="text-5xl mb-4">💵</div>
+                        <h3 class="text-xl font-semibold text-emerald-800 mb-3">Cash Donations</h3>
+                        <p class="text-emerald-600 mb-4 text-sm">Schedule pickup or drop-off for cash donations</p>
+                        <button class="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 w-full font-semibold shadow-lg" onclick="showModal('cashDonationForm')">Schedule Cash</button>
+                    </div>
+                    <div class="bg-gradient-to-br from-white to-emerald-50 rounded-xl p-6 text-center shadow-lg border-2 border-emerald-200 hover:border-emerald-400 transition-all duration-300 transform hover:scale-105">
+                        <div class="text-5xl mb-4">📦</div>
+                        <h3 class="text-xl font-semibold text-emerald-800 mb-3">Item Donations</h3>
+                        <p class="text-emerald-600 mb-4 text-sm">Donate clothing, food, books, and other items</p>
+                        <button class="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 w-full font-semibold shadow-lg" onclick="showModal('itemDonationForm')">Donate Items</button>
+                    </div>
+                    <div class="bg-gradient-to-br from-white to-emerald-50 rounded-xl p-6 text-center shadow-lg border-2 border-emerald-200 hover:border-emerald-400 transition-all duration-300 transform hover:scale-105">
+                        <div class="text-5xl mb-4">🔄</div>
+                        <h3 class="text-xl font-semibold text-emerald-800 mb-3">Recurring Gifts</h3>
+                        <p class="text-emerald-600 mb-4 text-sm">Set up automatic weekly, monthly, or yearly giving</p>
+                        <button class="bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white px-4 py-2 rounded-lg text-sm transition-all duration-300 w-full font-semibold shadow-lg" onclick="showModal('recurringGiftForm')">Set Up Recurring</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Section -->
+        <footer class="bg-gradient-to-r from-purple-900 via-indigo-900 to-violet-900 text-white py-12 mt-12 relative overflow-hidden">
+            <div class="absolute inset-0 opacity-10">
+                <div class="absolute top-4 left-8 text-4xl text-yellow-300">✨</div>
+                <div class="absolute top-8 right-12 text-3xl text-yellow-200">👑</div>
+                <div class="absolute bottom-8 left-16 text-4xl text-yellow-300">🕊️</div>
+                <div class="absolute bottom-6 right-8 text-3xl text-yellow-200">✨</div>
+            </div>
+            <div class="max-w-6xl mx-auto px-4 text-center relative">
+                <h3 class="text-2xl font-bold mb-3 text-yellow-300">New Found Faith Visions</h3>
+                <p class="text-purple-200 text-lg">New Found Faith Ministries</p>
+                <p class="text-purple-200 text-lg">Dr. QK Tyson - Shepherd, Pastor &amp; Founder</p>
+                <div class="mt-6 text-purple-300">
+                    <p class="italic">"Faith is the substance of things hoped for, the evidence of things not seen." - Hebrews 11:1</p>
+                </div>
+                <div class="mt-6 text-purple-300 flex flex-col items-center justify-center space-y-2">
+                    <p class="text-lg"><i class="fas fa-phone-alt mr-2"></i> Phone: <a href="tel:4109292133" class="hover:underline">410-929-2133</a></p>
+                    <p class="text-lg"><i class="fas fa-envelope mr-2"></i> Email: <a href="mailto:newfoundfaithvisions@gmail.com" class="hover:underline">newfoundfaithvisions@gmail.com</a></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modals Container -->
+    <div id="modalContainer" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close-btn" onclick="hideModal()">&times;</button>
+            <div id="modalContentArea">
+                <!-- Forms will be dynamically loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Get references to the elements
+        const generateAdviceBtn = document.getElementById('generateAdviceBtn');
+        const outreachScenarioInput = document.getElementById('outreachScenario');
+        const adviceLoading = document.getElementById('adviceLoading');
+        const outreachAdviceOutput = document.getElementById('outreachAdviceOutput');
+        const adviceText = document.getElementById('adviceText');
+        const adviceError = document.getElementById('adviceError');
+
+        // Modal elements
+        const modalContainer = document.getElementById('modalContainer');
+        const modalContentArea = document.getElementById('modalContentArea');
+
+        // Function to show the modal with specific content
+        function showModal(formId) {
+            modalContentArea.innerHTML = ''; // Clear previous content
+            let formHtml = '';
+            let formTitle = '';
+
+            // Define forms
+            const forms = {
+                // Request Services Forms
+                newMemberForm: {
+                    title: 'New Member Registration',
+                    html: `
+                        <form class="p-4">
+                            <div class="mb-4">
+                                <label for="member_name" class="block text-sm font-medium text-gray-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="member_name" name="member_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="member_email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="member_email" name="member_email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="member_phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                <input type="tel" id="member_phone" name="member_phone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="member_message" class="block text-sm font-medium text-gray-700 mb-1">Tell us about yourself:</label>
+                                <textarea id="member_message" name="member_message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md">Submit Registration</button>
+                        </form>
+                    `
+                },
+                outreachForm: {
+                    title: 'Outreach Services Request',
+                    html: `
+                        <form class="p-4">
+                            <div class="mb-4">
+                                <label for="outreach_name" class="block text-sm font-medium text-gray-700 mb-1">Your Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="outreach_name" name="outreach_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="outreach_email" class="block text-sm font-medium text-gray-700 mb-1">Your Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="outreach_email" name="outreach_email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="outreach_type" class="block text-sm font-medium text-gray-700 mb-1">Type of Assistance Needed <span class="text-red-500">*</span></label>
+                                <select id="outreach_type" name="outreach_type" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Select...</option>
+                                    <option value="youth_support">Youth Support</option>
+                                    <option value="lgbtq_support">LGBTQ+ Community Support</option>
+                                    <option value="elderly_care">Elderly Care/Support</option>
+                                    <option value="tutoring">Tutoring Services</option>
+                                    <option value="spiritual_counseling">Spiritual Counseling</option>
+                                    <option value="other">Other Community Support</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="outreach_message" class="block text-sm font-medium text-gray-700 mb-1">Describe your need:</label>
+                                <textarea id="outreach_message" name="outreach_message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-md">Submit Request</button>
+                        </form>
+                    `
+                },
+                resumeForm: {
+                    title: 'Resume Building & Reference Letters',
+                    html: `
+                        <form class="p-4">
+                            <div class="mb-4">
+                                <label for="resume_name" class="block text-sm font-medium text-gray-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="resume_name" name="resume_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="resume_email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="resume_email" name="resume_email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="resume_service" class="block text-sm font-medium text-gray-700 mb-1">Service Needed <span class="text-red-500">*</span></label>
+                                <select id="resume_service" name="resume_service" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <option value="">Select...</option>
+                                    <option value="resume_build">Resume Building</option>
+                                    <option value="reference_letter">Reference Letter</option>
+                                    <option value="both">Both</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="resume_message" class="block text-sm font-medium text-gray-700 mb-1">Tell us about your needs:</label>
+                                <textarea id="resume_message" name="resume_message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2 px-4 rounded-md">Submit Request</button>
+                        </form>
+                    `
+                },
+                partnerChurchForm: {
+                    title: 'Partner Church Inquiry',
+                    html: `
+                        <form class="p-4">
+                            <div class="mb-4">
+                                <label for="partner_name" class="block text-sm font-medium text-gray-700 mb-1">Your Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="partner_name" name="partner_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="partner_church_name" class="block text-sm font-medium text-gray-700 mb-1">Church/Organization Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="partner_church_name" name="partner_church_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="partner_email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="partner_email" name="partner_email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="partner_message" class="block text-sm font-medium text-gray-700 mb-1">How would you like to partner?</label>
+                                <textarea id="partner_message" name="partner_message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-amber-600 hover:bg-amber-700 text-white font-semibold py-2 px-4 rounded-md">Submit Inquiry</button>
+                        </form>
+                    `
+                },
+                visitorForm: {
+                    title: 'Visitor Information',
+                    html: `
+                        <form class="p-4">
+                            <div class="mb-4">
+                                <label for="visitor_name" class="block text-sm font-medium text-gray-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="visitor_name" name="visitor_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="visitor_email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="visitor_email" name="visitor_email" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="visitor_phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                <input type="tel" id="visitor_phone" name="visitor_phone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="visitor_message" class="block text-sm font-medium text-gray-700 mb-1">How did you hear about us?</label>
+                                <textarea id="visitor_message" name="visitor_message" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-cyan-600 hover:bg-cyan-700 text-white font-semibold py-2 px-4 rounded-md">Submit Information</button>
+                        </form>
+                    `
+                },
+                prayerForm: {
+                    title: 'Prayer Request',
+                    html: `
+                        <form class="p-4">
+                            <div class="mb-4">
+                                <label for="prayer_name" class="block text-sm font-medium text-gray-700 mb-1">Your Name (Optional)</label>
+                                <input type="text" id="prayer_name" name="prayer_name" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="prayer_request" class="block text-sm font-medium text-gray-700 mb-1">Your Prayer Request <span class="text-red-500">*</span></label>
+                                <textarea id="prayer_request" name="prayer_request" rows="6" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-rose-600 hover:bg-rose-700 text-white font-semibold py-2 px-4 rounded-md">Submit Prayer Request</button>
+                        </form>
+                    `
+                },
+
+                // Advertise With Us Forms
+                generalAdsForm: {
+                    title: 'General Advertising Inquiry',
+                    html: `
+                        <form class="p-4">
+                            <div class="mb-4">
+                                <label for="ad_name" class="block text-sm font-medium text-gray-700 mb-1">Your Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="ad_name" name="ad_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="ad_company" class="block text-sm font-medium text-gray-700 mb-1">Company/Organization Name</label>
+                                <input type="text" id="ad_company" name="ad_company" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="ad_email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="ad_email" name="ad_email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="ad_interest" class="block text-sm font-medium text-gray-700 mb-1">Area of Interest <span class="text-red-500">*</span></label>
+                                <select id="ad_interest" name="ad_interest" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                    <option value="">Select...</option>
+                                    <option value="website_ads">Website Ads</option>
+                                    <option value="social_media">Social Media Promotion</option>
+                                    <option value="newsletter">Newsletter Inclusion</option>
+                                    <option value="general">General Advertising</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="ad_message" class="block text-sm font-medium text-gray-700 mb-1">Tell us about your advertising needs:</label>
+                                <textarea id="ad_message" name="ad_message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-md">Submit Inquiry</button>
+                        </form>
+                    `
+                },
+                websiteAdsForm: {
+                    title: 'Website Advertising Inquiry',
+                    html: `
+                        <form class="p-4">
+                            <div class="mb-4">
+                                <label for="web_ad_name" class="block text-sm font-medium text-gray-700 mb-1">Your Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="web_ad_name" name="web_ad_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="web_ad_company" class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                                <input type="text" id="web_ad_company" name="web_ad_company" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="web_ad_email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="web_ad_email" name="web_ad_email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="web_ad_type" class="block text-sm font-medium text-gray-700 mb-1">Preferred Ad Type <span class="text-red-500">*</span></label>
+                                <select id="web_ad_type" name="web_ad_type" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                                    <option value="">Select...</option>
+                                    <option value="banner">Banner Ad</option>
+                                    <option value="sponsored">Sponsored Content</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="web_ad_message" class="block text-sm font-medium text-gray-700 mb-1">Message:</label>
+                                <textarea id="web_ad_message" name="web_ad_message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-md">Submit Inquiry</button>
+                        </form>
+                    `
+                },
+                socialMediaAdsForm: {
+                    title: 'Social Media Advertising Inquiry',
+                    html: `
+                        <form class="p-4">
+                            <div class="mb-4">
+                                <label for="social_ad_name" class="block text-sm font-medium text-gray-700 mb-1">Your Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="social_ad_name" name="social_ad_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="social_ad_company" class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                                <input type="text" id="social_ad_company" name="social_ad_company" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="social_ad_email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="social_ad_email" name="social_ad_email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="social_ad_platforms" class="block text-sm font-medium text-gray-700 mb-1">Preferred Platforms</label>
+                                <input type="text" id="social_ad_platforms" name="social_ad_platforms" placeholder="e.g., Facebook, Instagram" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="social_ad_message" class="block text-sm font-medium text-gray-700 mb-1">Message:</label>
+                                <textarea id="social_ad_message" name="social_ad_message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-md">Submit Inquiry</button>
+                        </form>
+                    `
+                },
+                newsletterAdsForm: {
+                    title: 'Newsletter Advertising Inquiry',
+                    html: `
+                        <form class="p-4">
+                            <div class="mb-4">
+                                <label for="newsletter_ad_name" class="block text-sm font-medium text-gray-700 mb-1">Your Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="newsletter_ad_name" name="newsletter_ad_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="newsletter_ad_company" class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                                <input type="text" id="newsletter_ad_company" name="newsletter_ad_company" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="newsletter_ad_email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="newsletter_ad_email" name="newsletter_ad_email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="newsletter_ad_message" class="block text-sm font-medium text-gray-700 mb-1">Message:</label>
+                                <textarea id="newsletter_ad_message" name="newsletter_ad_message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-semibold py-2 px-4 rounded-md">Submit Inquiry</button>
+                        </form>
+                    `
+                },
+
+                // Give & Support Our Ministry Forms
+                onlineDonationInfo: {
+                    title: 'Online Donations',
+                    html: `
+                        <div class="text-center p-4">
+                            <p class="text-lg text-gray-700 mb-4">Thank you for your generosity! You can make secure online donations via:</p>
+                            <div class="flex flex-wrap justify-center gap-4 mb-6">
+                                <a href="https://buy.stripe.com/6oU14pajpfuCgHXgsK8g001" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md shadow-lg flex items-center">
+                                    <i class="fas fa-credit-card mr-2"></i> Credit/Debit Card
+                                </a>
+                                <a href="https://paypal.me/newfoundfaithvisions?country.x=US&locale.x=en_US" target="_blank" rel="noopener noreferrer" class="inline-block bg-blue-700 hover:bg-blue-800 text-white font-semibold py-2 px-4 rounded-md shadow-lg flex items-center">
+                                    <i class="fab fa-paypal mr-2"></i> PayPal
+                                </a>
+                                <a href="sms:4106228293?body=I%27d%20like%20to%20make%20an%20Apple%20Cash%20donation%20to%20New%20Found%20Faith%20Ministries.%20Please%20send%20the%20amount%20via%20Apple%20Cash%20to%20this%20number." target="_blank" rel="noopener noreferrer" class="inline-block bg-gray-800 hover:bg-gray-900 text-white font-semibold py-2 px-4 rounded-md shadow-lg flex items-center">
+                                    <i class="fab fa-apple-pay mr-2"></i> Apple Pay
+                                </a>
+                                <a href="https://cash.app/$qurintyson" target="_blank" rel="noopener noreferrer" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md shadow-lg flex items-center">
+                                    <i class="fas fa-money-bill-wave mr-2"></i> Cash App ($qurintyson)
+                                </a>
+                            </div>
+                            <p class="text-sm text-gray-500 mt-4">Note: Actual payment processing is handled by secure third-party platforms.</p>
+                            <p class="text-xs text-gray-500 mt-2">For Apple Pay, this will open your Messages app to facilitate an Apple Cash payment to 410-622-8293.</p>
+                        </div>
+                    `
+                },
+                cashDonationForm: {
+                    title: 'Cash Donation Inquiry',
+                    html: `
+                        <form class="p-4">
+                            <div class="mb-4">
+                                <label for="cash_name" class="block text-sm font-medium text-gray-700 mb-1">Your Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="cash_name" name="cash_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="cash_email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="cash_email" name="cash_email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="cash_phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                <input type="tel" id="cash_phone" name="cash_phone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="cash_pref_date" class="block text-sm font-medium text-gray-700 mb-1">Preferred Date for Pickup/Drop-off</label>
+                                <input type="date" id="cash_pref_date" name="cash_pref_date" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="cash_message" class="block text-sm font-medium text-gray-700 mb-1">Additional details:</label>
+                                <textarea id="cash_message" name="cash_message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-md">Submit Inquiry</button>
+                        </form>
+                    `
+                },
+                itemDonationForm: {
+                    title: 'Item Donation Inquiry',
+                    html: `
+                        <form class="p-4">
+                            <div class="mb-4">
+                                <label for="item_name" class="block text-sm font-medium text-gray-700 mb-1">Your Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="item_name" name="item_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="item_email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="item_email" name="item_email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="item_phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                <input type="tel" id="item_phone" name="item_phone" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="item_type" class="block text-sm font-medium text-gray-700 mb-1">Type of Items (e.g., clothing, food, books) <span class="text-red-500">*</span></label>
+                                <input type="text" id="item_type" name="item_type" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="item_message" class="block text-sm font-medium text-gray-700 mb-1">Additional details/quantity:</label>
+                                <textarea id="item_message" name="item_message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-md">Submit Inquiry</button>
+                        </form>
+                    `
+                },
+                recurringGiftForm: {
+                    title: 'Recurring Gift Setup',
+                    html: `
+                        <form class="p-4">
+                            <p class="text-sm text-gray-600 mb-4">Your recurring gift helps us continue our outreach efforts. If you are able, consider adding up to $4.50 to your monthly donation to help cover processing fees for our ministry.</p>
+                            <div class="mb-4">
+                                <label for="recurring_name" class="block text-sm font-medium text-gray-700 mb-1">Your Name <span class="text-red-500">*</span></label>
+                                <input type="text" id="recurring_name" name="recurring_name" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="recurring_email" class="block text-sm font-medium text-gray-700 mb-1">Email <span class="text-red-500">*</span></label>
+                                <input type="email" id="recurring_email" name="recurring_email" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="recurring_amount" class="block text-sm font-medium text-gray-700 mb-1">Monthly Donation Amount ($) <span class="text-red-500">*</span></label>
+                                <input type="number" id="recurring_amount" name="recurring_amount" min="1" step="any" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="recurring_frequency" class="block text-sm font-medium text-gray-700 mb-1">Frequency <span class="text-red-500">*</span></label>
+                                <select id="recurring_frequency" name="recurring_frequency" required class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                                    <option value="monthly">Monthly</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="quarterly">Quarterly</option>
+                                    <option value="yearly">Yearly</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="recurring_message" class="block text-sm font-medium text-gray-700 mb-1">Additional details:</label>
+                                <textarea id="recurring_message" name="recurring_message" rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 px-4 rounded-md">Proceed to Stripe for Setup</button>
+                        </form>
+                    `
+                }
+            };
+
+            if (forms[formId]) {
+                formTitle = forms[formId].title;
+                formHtml = forms[formId].html;
+            } else {
+                formTitle = 'Form Not Found';
+                formHtml = '<p class="text-center text-red-500">The requested form could not be loaded.</p>';
+            }
+
+            modalContentArea.innerHTML = `
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">${formTitle}</h3>
+                ${formHtml}
+            `;
+            modalContainer.classList.add('show');
+
+            // Add event listeners to the new form (if any)
+            const currentForm = modalContentArea.querySelector('form');
+            if (currentForm) {
+                currentForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); // Prevent default form submission
+                    // In a real application, you would send this data to a backend server.
+                    console.log(`Form submitted: ${formTitle}`);
+                    const formData = new FormData(event.target);
+                    const data = {};
+                    for (let [key, value] of formData.entries()) {
+                        data[key] = value;
+                    }
+                    console.log(data);
+
+                    if (formId === 'recurringGiftForm') {
+                        // For recurring gifts, redirect to Stripe subscription link
+                        const stripeSubscriptionLink = `https://donate.stripe.com/9B63cxdvBaaidvL3FY8g000`;
+                        alert('You will now be redirected to Stripe to complete your recurring gift setup. Please enter your desired monthly amount there.');
+                        window.open(stripeSubscriptionLink, '_blank');
+                    } else {
+                        alert('Your request has been submitted! We will get back to you soon.'); // Using alert for demo purposes
+                    }
+                    hideModal(); // Hide the modal after submission
+                });
+            }
+        }
+
+        // Function to hide the modal
+        function hideModal() {
+            modalContainer.classList.remove('show');
+            modalContentArea.innerHTML = ''; // Clear content when hidden
+        }
+
+        // Event listener for the main generate advice button (LLM feature)
+        generateAdviceBtn.addEventListener('click', async () => {
+            const scenario = outreachScenarioInput.value.trim();
+
+            // Hide previous outputs and errors
+            outreachAdviceOutput.classList.add('hidden');
+            adviceError.classList.add('hidden');
+            adviceText.textContent = '';
+
+            if (scenario) {
+                adviceLoading.classList.remove('hidden'); // Show loading indicator
+                try {
+                    const prompt = `As a wise and compassionate spiritual advisor for a Christian ministry, provide advice based on the following outreach or community support scenario. Make the advice compassionate, practical, and rooted in biblical principles. Scenario: "${scenario}"`;
+                    const advice = await callGeminiApi(prompt);
+                    if (advice) {
+                        adviceText.textContent = advice;
+                        outreachAdviceOutput.classList.remove('hidden'); // Show output
+                    } else {
+                        adviceError.classList.remove('hidden'); // Show error if no advice
+                    }
+                } catch (err) {
+                    console.error('Error calling Gemini API:', err);
+                    adviceError.classList.remove('hidden'); // Show error
+                } finally {
+                    adviceLoading.classList.add('hidden'); // Hide loading indicator
+                }
+            } else {
+                // Optionally, show a message if the input is empty
+                adviceText.textContent = 'Please enter a scenario to get advice.';
+                outreachAdviceOutput.classList.remove('hidden');
+            }
+        });
+
+        // Function to handle API call with exponential backoff
+        async function callGeminiApi(prompt, retries = 3, delay = 1000) {
+            let chatHistory = [];
+            chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+            const payload = { contents: chatHistory };
+            const apiKey = ""; // If you want to use models other than gemini-2.5-flash-preview-05-20 or imagen-3.0-generate-002, provide an API key here. Otherwise, leave this as-is.
+            const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-05-20:generateContent?key=${apiKey}`;
+
+            for (let i = 0; i < retries; i++) {
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        return result.candidates[0].content.parts[0].text;
+                    } else {
+                        throw new Error('Unexpected API response structure or missing content.');
+                    }
+                } catch (error) {
+                    console.error(`Attempt ${i + 1} failed: ${error.message}`);
+                    if (i < retries - 1) {
+                        await new Promise(res => setTimeout(res, delay));
+                        delay *= 2;
+                    } else {
+                        throw error;
+                    }
+                }
+            }
+            return null;
+        }
+    </script>
+</body>
+</html>
